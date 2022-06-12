@@ -6,17 +6,74 @@ jobs:
       image: ubuntu-2004:202111-02
     resource_class: medium
     working_directory: ~/checkout
-    dependencies:
-      pre:
-        - sudo apt install curl
-        - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-        - source ~/.profile
-        - nvm install node
-        - nvm install 14.19.3
-        - nvm use 14.19.3
     steps:
       - checkout
-      - run: npm --version
+      - run:
+          name: check basic staff
+          command: |
+             sudo apt install curl
+             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+             source ~/.profile
+             nvm install node
+             nvm install 14.19.3
+             nvm use 14.19.3
+             run:npm --version
+             cd react-cti
+             npm install
+             npm run webpack
+      - run:
+          name:  handle client folders (run this only if react-ui-v2 folder has changed)  **********
+          command: |
+             sudo apt install curl
+             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+             source ~/.profile
+             nvm install node
+             nvm install 14.19.3
+             nvm use 14.19.3
+             run:npm --version
+             cd react-ui-v2
+             npm install
+             npm run webpack-production        
+      - run:
+          name:  handle client folders (run this only if react-dashboard folder has changed)  **********
+          command: |
+             sudo apt install curl
+             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+             source ~/.profile
+             nvm install node
+             nvm install 14.19.3
+             nvm use 14.19.3
+             run:npm --version
+             cd react-dashboard
+             npm install
+             export NODE_OPTIONS=--max_old_space_size=4096
+             npm run build
+      - run:
+          name:  handle client folders (run this only if react-mandates-dashboard folder has changed)  **********
+          command: |
+             sudo apt install curl
+             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+             source ~/.profile
+             nvm install node
+             nvm install 14.19.3
+             nvm use 14.19.3
+             run:npm --version
+             cd react-mandates-dashboard
+             npm install
+             npm run build
+      - run:
+          name:  handle client folders (run this only if react-activists-payments folder has changed)  **********
+          command: |
+             sudo apt install curl
+             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+             source ~/.profile
+             nvm install node
+             nvm install 14.19.3
+             nvm use 14.19.3
+             run:npm --version
+             cd react-activists-payments
+             npm install
+             npm run build             
       - run:
           name: check basic staff
           command: |
@@ -35,7 +92,7 @@ jobs:
              mkdir h2
              ls  
 
-              
+
 
 workflows:
   version: 2
