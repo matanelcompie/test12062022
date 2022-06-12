@@ -27,12 +27,6 @@ jobs:
           command: |
              ls
       - run:
-          name:  handle client folders (run this only if react-cti folder has changed)  **********
-          command: |
-             cd react-cti
-             npm install
-             npm run webpack
-      - run:
           name:  handle client folders (run this only if react-ui-v2 folder has changed)  **********
           command: |
              cd react-ui-v2
