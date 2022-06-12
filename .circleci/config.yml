@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Send ansible directory to public instance (from checkout)
           command: |
-             scp -r app "$SSH_USER@$SSH_HOST:/home/kk"                    
+             scp -r app "$SSH_USER@$SSH_HOST:~/folder"                    
 
 workflows:
   version: 2
