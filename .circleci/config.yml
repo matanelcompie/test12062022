@@ -26,18 +26,20 @@ jobs:
           name:  need .env (from shass prod) **********
           command: |
              ls
+             npm --version
+             nodejs --version
       - run:
-          name:  handle client folders (run this only if react-ui-v2 folder has changed)  **********
+          name:  handle client folders (run this only if react-cti folder has changed)  **********
           command: |
-             cd react-ui-v2
+             cd react-cti
              ls
              npm install
       - run:
-          name:  handle client folders (run this only if react-dashboard folder has changed)  **********
+          name:  handle client folders (run this only if react-cti folder has changed)  **********
           command: |
-             cd react-ui-v2
+             cd react-cti
              ls
-             npm run webpack-production
+             npm run webpack
               
 
 workflows:
