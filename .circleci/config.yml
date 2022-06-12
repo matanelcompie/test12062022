@@ -8,6 +8,13 @@ jobs:
     working_directory: ~/checkout
     steps:
       - checkout
+      - sudo apt install curl
+      - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+      - source ~/.profile  
+      - nvm install node
+      - nvm install 14.19.3
+      - nvm use 14.19.3
+      - npm --version
       - run:
           name: check basic staff
           command: |
