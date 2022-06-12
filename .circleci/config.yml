@@ -25,7 +25,8 @@ jobs:
              npm --version
       - run:
           name: ii
-          command: |             
+          command: |
+             npm --version             
              cd react-cti
              npm install
              npm run webpack   
