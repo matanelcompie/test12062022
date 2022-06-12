@@ -23,10 +23,6 @@ jobs:
              nvm install 14.19.3
              nvm use 14.19.3       
       - run:
-          name: update database changes
-          command: |
-             php artisan migrate
-      - run:
           name:  need .env (from shass prod) **********
           command: |
              ls
