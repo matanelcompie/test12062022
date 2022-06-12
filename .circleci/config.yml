@@ -30,26 +30,15 @@ jobs:
           name:  handle client folders (run this only if react-ui-v2 folder has changed)  **********
           command: |
              cd react-ui-v2
+             ls
              npm install
-             npm run webpack-production
       - run:
           name:  handle client folders (run this only if react-dashboard folder has changed)  **********
           command: |
-             cd react-dashboard
-             npm install
-             npm run build
-      - run:
-          name:  handle client folders (run this only if react-mandates-dashboard folder has changed)  **********
-          command: |
-             cd react-mandates-dashboard
-             npm install
-             npm run build
-      - run:
-          name:  handle client folders (run this only if react-activists-payments folder has changed)  **********
-          command: |
-             cd react-activists-payments
-             npm install
-             npm run build                 
+             cd react-ui-v2
+             ls
+             npm run webpack-production
+              
 
 workflows:
   version: 2
