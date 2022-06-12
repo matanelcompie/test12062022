@@ -6,11 +6,16 @@ jobs:
       image: ubuntu-2004:202111-02
     resource_class: medium
     working_directory: ~/checkout
+    dependencies:
+      pre:
+        - sudo apt install curl
+        - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+        - source ~/.profile
+        - nvm install node
+        - nvm install 14.19.3
+        - nvm use 14.19.3
     steps:
       - checkout
-      - node/install-packages:
-          cache-path: ~/project/node_modules
-          override-ci-command: nvm install node && nvm install 14.19.3 && nvm use 14.19.3
       - run: npm --version
       - run:
           name: check basic staff
