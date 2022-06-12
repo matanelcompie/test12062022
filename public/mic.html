@@ -1,0 +1,29 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<audio id="player" controls></audio>
+		<script>
+		  var player = document.getElementById('player');
+		  var handleSuccess = function(stream) {
+		    if (window.URL) {
+		      player.srcObject = stream;
+		    } else {
+		      player.srcObject = stream;
+		    }
+		  };
+
+		  var handleError = function(err) {
+		  	console.log("Can't get audio");
+		  }
+
+		  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+		      .then(handleSuccess, handleError);
+
+		      navigator.mediaDevices.enumerateDevices().then((devices) => {
+		      	console.log(devices);
+			  devices = devices.filter((d) => d.kind === 'audioinput');
+			});
+		</script>
+	</body>
+</html>

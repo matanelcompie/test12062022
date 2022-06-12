@@ -1,0 +1,51 @@
+.household-details {
+  border-top: 1px solid $gray-light;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+
+  &__row {
+    display: flex;
+    border-top: 1px solid $gray-light;
+    padding: 12px 15px;
+  }
+  &__header {
+    align-items: center;
+    font-weight: bold;
+    line-height: 1.83;
+    color: $black-light-1;
+    padding: 9px 15px;
+  }
+
+  $static-column-widths: (
+          age: 35px,
+          phone-num: 130px,
+  );
+  $relative-column-widths: (
+          first-name: 3/12,
+          support-status: 4.5/12,
+          vote-status: 4.5/12,
+  );
+
+  $static-width-total: map-sum($static-column-widths);
+  $relative-remainder: (100% - #{$static-width-total});
+  &__cell {
+    box-sizing: border-box;
+    padding: 0 5px;
+    flex-shrink: 0;
+    line-height: 22px;
+    @each $column, $width in $static-column-widths {
+      &_col_#{$column} {
+        width: $width;
+      }
+    }
+    @each $column, $width in $relative-column-widths {
+      &_col_#{$column} {
+        width: calc((#{$relative-remainder}) * (#{$width * 1}));
+      }
+    }
+    &_col_age {
+      text-align: center;
+    }
+  }
+}

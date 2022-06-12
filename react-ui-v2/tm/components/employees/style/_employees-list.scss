@@ -1,0 +1,56 @@
+$static-column-widths: (
+        actions: 140px,
+);
+$relative-column-widths: (
+  small_cell: 1/10,
+  phone_cell: 1/8,
+  medium_cell: 1/7,
+  cell: 1/6,
+);
+
+.employees-list {
+  border: 1px solid #e0e0e0;
+  font-weight: 600;
+  $static-width-total: map-sum($static-column-widths);
+  $relative-remainder: (100% - #{$static-width-total});
+  &__cell {
+    padding: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+
+    @each $column, $width in $static-column-widths {
+      &_col_#{$column} {
+        width: $width;
+      }
+    }
+    @each $column, $width in $relative-column-widths {
+      &_col_#{$column} {
+        width: calc((#{$relative-remainder}) * (#{$width * 1}));
+        flex-grow: 1;
+        text-align: initial;
+      }
+    }
+    & + & {
+      border-right: 1px solid #dedede;
+    }
+
+    &_col_employee {
+      color: #488bb6;
+      .question-list-header & ,
+      .question-list-row_inactive & {
+        color: inherit;
+      }
+    }
+  }
+}
+.less-padding{
+  padding:6px;
+}
+.employees-tab .form-group{
+  margin: 0;
+}

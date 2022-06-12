@@ -1,0 +1,20 @@
+export class Voter {
+  birth_date;
+  birth_date_type;
+  city_id;
+  city_name;
+  email;
+  first_name;
+  flat;
+  gender;
+  house;
+  house_entry;
+  last_name;
+  neighborhood;
+  passport;
+  personal_identity;
+  phones;
+  street;
+  street_id;
+  zip;
+}

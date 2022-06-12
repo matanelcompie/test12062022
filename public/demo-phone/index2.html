@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <title>Demo</title>
+	
+<script src="https://sipjs.com/download/sip-0.12.0.min.js"></script>
+
+
+
+  </head>
+
+  <body>
+<video id="remote_video"></video>
+<video id="local_video" muted></video>
+<div id="hold">Hold</div>
+<div id="unhold">Unhold</div>
+
+<script>
+
+let config = {
+    userAgentString: 'SIP.js/0.12.0 BB',
+    uri: "1000@dialer1.shass.co.il",
+    transportOptions: {
+    	wsServers: ["wss://dialer1.shass.co.il:7443/ws"]
+    },
+    authorizationUser: 1000,
+    password: "LCSfiS97LgqyIt6Wsg2y",
+    traceSip: true
+};
+
+var currentSession = null;
+
+var remoteVideo = document.getElementById('remote_video');
+var localVideo = document.getElementById('local_video');
+var hold = document.getElementById('hold');
+var unhold = document.getElementById('unhold');
+
+hold.addEventListener("click", function(e) {
+	if (currentSession) currentSession.hold();
+});
+
+unhold.addEventListener("click", function(e) {
+	if (currentSession) currentSession.unhold();
+});
+
+
+var options = {
+    sessionDescriptionHandlerOptions: {
+        constraints: {
+          audio: true,
+          video: false
+        }
+    }
+}
+
+var ua = new SIP.UA(config);
+ua.register();
+
+ua.on('registered', function () {
+    console.log("registered");
+    currentSession = ua.invite("035726444@dialer1.shass.co.il", options);
+    
+	currentSession.on('trackAdded', function() {
+	console.log("trackAdded");
+	  // We need to check the peer connection to determine which track was added
+	
+	  var pc = currentSession.sessionDescriptionHandler.peerConnection;
+	
+	  // Gets remote tracks
+	  var remoteStream = new MediaStream();
+	  pc.getReceivers().forEach(function(receiver) {
+	    remoteStream.addTrack(receiver.track);
+	  });
+	  remoteVideo.srcObject = remoteStream;
+	  remoteVideo.play();
+	
+	  // Gets local tracks
+	  var localStream = new MediaStream();
+	  pc.getSenders().forEach(function(sender) {
+	    localStream.addTrack(sender.track);
+	  });
+	  localVideo.srcObject = localStream;
+	  localVideo.play();
+	});
+	    
+});
+
+/*ua.on('invite', function (session) {
+	console.log("on invite");
+	console.log(session.remoteIdentity.uri.user);
+    let optionsa = {
+        media: {
+            constraints: {
+                audio: true,
+                video: false
+            },
+            render: {
+                remote: document.getElementById('remote_video'),
+                local: document.getElementById('local_video')
+            }
+        }
+    };
+
+    currentSession = session;
+
+    currentSession.on('rejected', function(data) {
+        console.log("session rejected");
+    });
+       
+    currentSession.on('failed', function(data) {
+        console.log("session failed");
+    });
+       
+    currentSession.on('terminated', function(data) {
+        console.log("session terminated");
+    });
+ 
+    currentSession.on('cancel', function(data) {
+        console.log("session canceled");
+    });     
+       
+    currentSession.on('bye', function(data) {
+        console.log("session bye");
+    });   
+        
+    currentSession.on('accepted', function(data) {
+        console.log("session accepted");
+        console.log(currentSession.remoteIdentity.uri.user);
+    });
+
+	currentSession.on('trackAdded', function() {
+	  // We need to check the peer connection to determine which track was added
+	
+	  var pc = currentSession.sessionDescriptionHandler.peerConnection;
+	
+	  // Gets remote tracks
+	  var remoteStream = new MediaStream();
+	  pc.getReceivers().forEach(function(receiver) {
+	    remoteStream.addTrack(receiver.track);
+	  });
+	  remoteVideo.srcObject = remoteStream;
+	  remoteVideo.play();
+	
+	  // Gets local tracks
+	  var localStream = new MediaStream();
+	  pc.getSenders().forEach(function(sender) {
+	  	console.log(sender);
+	    localStream.addTrack(sender.track);
+	  });
+	  localVideo.srcObject = localStream;
+	  localVideo.play();
+	});
+
+    currentSession.accept(options);
+});*/
+
+ua.on('disconnected', function() {
+
+});
+
+</script>
+    
+
+  </body>
+</html>

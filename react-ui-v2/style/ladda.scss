@@ -1,0 +1,51 @@
+.ladda-button, .ladda-button .ladda-spinner, .ladda-button .ladda-label {
+  @include transition(0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all);
+}
+// Implemented as Slide Left
+$spinnerSize: 28px;
+.ladda-button {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  .ladda-spinner {
+    position: absolute;
+    z-index: 2;
+    display: inline-block;
+    width: $spinnerSize;
+    height: $spinnerSize;
+    top: calc(50% - #{$spinnerSize / 2});
+    left: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: url("images/ladda-spinner.svg") center no-repeat;
+    background-size: contain;
+  }
+
+  .ladda-label {
+    position: relative;
+    z-index: 3;
+    left: 0;
+    opacity: 1;
+  }
+
+  &_loading {
+    cursor: default;
+    color: #fff;
+    background-color: #999;
+    border-color: rgba(0, 0, 0, 0.07);
+    pointer-events: none;
+
+    .ladda-spinner {
+      opacity: 1;
+      left: calc(50% - #{$spinnerSize / 2});
+    }
+
+    .ladda-label {
+      opacity: 0;
+      left: -100%;
+    }
+  }
+}

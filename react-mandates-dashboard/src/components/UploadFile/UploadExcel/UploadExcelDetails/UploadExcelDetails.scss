@@ -1,0 +1,43 @@
+.contentContainer{
+    text-align: right;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+    background-color: #fff;
+    padding: 30px;
+    margin: 10px 15px;
+
+    .comboExcelType{
+        width: 250px;
+    }
+
+    .btn-outline-primary{
+      float: left;
+    }
+
+    .option-value-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fbfbfb;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .header-excel{
+        margin-top: 10px;
+    }
+    }
+    
+}
+
+.no-file{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+.title-excel{
+    margin-bottom: 15px;
+    color: rgb(50, 58, 107);
+    font-weight: bold;
+}
+

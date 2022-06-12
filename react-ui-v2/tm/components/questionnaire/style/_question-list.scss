@@ -1,0 +1,100 @@
+$static-column-widths: (
+        expand: 35px,
+        order: 35px,
+        actions: 140px,
+);
+$relative-column-widths: (
+        question: 1/3,
+        next: 1/3,
+        next-possibilities: 1/3,
+);
+
+.question-list {
+  border: 1px solid #e0e0e0;
+  font-weight: 600;
+  $static-width-total: map-sum($static-column-widths);
+  $relative-remainder: (100% - #{$static-width-total});
+  &__cell {
+    padding: 6px 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+
+    @each $column, $width in $static-column-widths {
+      &_col_#{$column} {
+        width: $width;
+      }
+    }
+    @each $column, $width in $relative-column-widths {
+      &_col_#{$column} {
+        width: calc((#{$relative-remainder}) * (#{$width * 1}));
+        flex-grow: 1;
+        text-align: initial;
+      }
+    }
+    & + & {
+      border-right: 1px solid #dedede;
+    }
+
+    &_col_question {
+      color: #488bb6;
+      .question-list-header & ,
+      .question-list-row_inactive & {
+        color: inherit;
+      }
+    }
+
+    &_col_expand {
+      padding: 4px;
+      background: #bdc9d5;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      .question-list-header & {
+        background: white;
+      }
+    }
+
+    &_spacer {
+      cursor: default;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+    .form-control {
+      height: 32px;
+    }
+  }
+
+  .draggable-list-item {
+    border-top: 1px solid #e0e0e0;
+    &__reorder-handle {
+      line-height: 38px;
+      top: 1px;
+    }
+  }
+
+  .question-modal__btn {
+    background: #fafafa;
+    &.disabled .action-icon {
+      cursor: not-allowed;
+    }
+  }
+
+  &_editing {
+    .question-modal__btn {
+      background: white;
+    }
+    .list-actions {
+      opacity: .65;
+      .action-icon {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

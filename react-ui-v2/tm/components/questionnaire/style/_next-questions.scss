@@ -1,0 +1,27 @@
+.next-questions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__q {
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    margin: 0 2px;
+    border: 1px solid #c0c0c0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    @include prefix(user-select, none);
+    cursor: default;
+    &_type_next {
+      background: #d6e6c1;
+    }
+    &_type_pa {
+      background: white;
+    }
+  }
+}

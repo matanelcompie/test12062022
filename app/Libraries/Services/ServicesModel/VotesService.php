@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Libraries\Services\ServicesModel;
+
+use App\Http\Controllers\VoterActivistController;
+use App\Libraries\Helper;
+use App\Models\ActivistsAllocations;
+use App\Models\BallotBox;
+use App\Models\ElectionCampaignPartyListVotes;
+use App\Models\VotersInElectionCampaigns;
+use App\Models\Votes;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+
+class VotesService
+{
+    
+}

@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<script src="js/sip-0.7.3.min.js"></script>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<video autoPlay id="remoteVideo"></video>
+		<video autoPlay id="localVideo" muted="muted"></video>
+		<button type="button" class="btn btn-success mb-2" id="endCall">ניתוק</button>
+		<div id="ua-status">Status</div>
+		<script>
+			var config = {
+			    uri: '1000@dialer1.shass.co.il',
+			    ws_servers: 'wss://dialer1.shass.co.il:7443/ws',
+			    authorizationUser: '1000',
+			    password: 'dror1234',
+				traceSip: false,
+			registerExpires: 60
+			};
+			var ua = new SIP.UA(config);
+			  
+			  var optionsa = {
+			    media: {
+			        constraints: {
+			            audio: true,
+			            video: false
+			        },
+			        render: {
+			            remote: document.getElementById('remoteVideo'),
+			            local: document.getElementById('localVideo')
+			        }
+			    }
+			};
+			
+			var currentSession = null;
+			var Status = document.getElementById('ua-status');
+			var endButton = document.getElementById('endCall');
+			Status.innerHTML = 'Connecting...';
+
+			  //ua = new SIP.UA(config);
+			
+			  ua.on('connected', function () {
+			    Status.innerHTML = 'Connected';
+			    ua.register();
+			  });
+			
+			  ua.on('registered', function () {
+			        Status.innerHTML = 'Registered';
+			  });
+			
+			  ua.on('unregistered', function () {
+			        Status.innerHTML = 'Unregistered';
+			  });
+			
+			  ua.on('invite', function (session) {
+			  	currentSession = session;
+			  	Status.innerHTML = 'invited';
+			  	/*currentSession.mediaHandler.on('addStream', function () {
+                    console.log("getting stream");
+                      currentSession.mediaHandler.render({
+                            remote: document.getElementById('remoteVideo')
+                          });
+                    });*/
+			  	/*currentSession.accept({
+			  		media: {
+				        constraints: {
+				            audio: true,
+				            video: false
+				        },
+				        render: {
+				            remote: document.getElementById('remoteVideo'),
+				            local: document.getElementById('localVideo')
+				        }			  			
+			  		}
+			  	});*/
+			  	console.log("invited");
+			  	currentSession.on('accepted', function() {
+			  		console.log("session accepted");
+			  		Status.innerHTML = 'accepted';
+			  		currentSession.mediaHandler.render(document.getElementById('remoteVideo'));
+			  	})
+			  	
+			  	currentSession.mediaHandler.on('addStream', function () {
+			  		console.log("getting stream");
+			  		currentSession.mediaHandler.render(ocument.getElementById('remoteVideo'));
+			  	});
+			  	currentSession.accept(optionsa);
+			  	console.log(currentSession);
+			    //endButton.innerHTML = 'ניתוק';
+				
+			    //Status.innerHTML = 'השיחה התחילה';
+			  });
+			
+			/*endButton.addEventListener("click", function () {
+			session.bye();
+			session.cancel();
+			session.terminate();
+			
+			
+			    alert("Call Ended");
+			}, false);*/
+		</script>
+	</body>
+</html>

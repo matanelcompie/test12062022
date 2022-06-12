@@ -1,0 +1,12 @@
+/// Sum all the values of a map
+/// @param {Map} $map
+/// @return {Number} total of all values of `$map`
+@function map-sum($map) {
+  $total: 0;
+
+  @each $key, $value in $map {
+    $total: $total + $value;
+  }
+
+  @return $total;
+}

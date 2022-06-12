@@ -1,0 +1,17 @@
+.filter-field {
+  padding: 0 10px;
+  width: 33%;
+
+  label {
+    font-weight: 600;
+  }
+  .values-control{
+    display: inline-block;
+    margin-right: 5px;
+    color: #1698f8;
+    cursor: pointer;
+    span:nth-child(2){
+      margin-right: 5px;
+    }
+  }
+}

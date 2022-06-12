@@ -1,0 +1,23 @@
+$action-icon-colors: (
+        pencil: #2096f6,
+        trash: #9e9e9e,
+        file-excel-o: #079a88,
+        eye: #4bb050,
+        eye-slash: #e71e62,
+);
+
+.portion-list-item {
+  display: flex;
+  position: relative;
+  .portion-list__cell {
+    &_col_name {
+      color: #327da4;
+    }
+  }
+  &_inactive {
+    color: #9f9f9f;
+    .portion-list__cell_col_name {
+      color: inherit;
+    }
+  }
+}

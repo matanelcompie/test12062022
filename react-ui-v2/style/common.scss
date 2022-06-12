@@ -1,0 +1,277 @@
+input:invalid {
+  // styles copied from bootstrap 'has-error' parent class
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  &:focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px #ce8483;
+  }
+}
+
+input.form-control.invalid {
+  border-color: #a94442;
+}
+
+.tab-title {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  &__title {
+    font-size: 22px;
+    color: #327da4;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-top: 5px;
+    flex-grow: 1;
+  }
+  &__btns {
+    margin-bottom: 12px;
+    .btn {
+      font-size: 13px;
+      position: relative;
+      line-height: 21px;
+      & + .btn {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+$list-action-icon-colors: (
+        pencil: #2096f6,
+        trash: #9e9e9e,
+        files-o: #26c7db,
+        file-excel-o: #079a88,
+        eye: #4bb050,
+        eye-slash: #e71e62,
+        plus: #2396f1,
+);
+
+.list-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  direction: ltr;
+}
+
+.action-icon {
+  cursor: pointer;
+  .btn & {
+    cursor: inherit;
+  }
+  @each $icon, $color in $list-action-icon-colors {
+    &.fa-#{$icon} {
+      color: $color;
+    }
+  }
+
+}
+.action-icon.disabledClass{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.no-data {
+  padding: 40px 0;
+  color: #747474;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+
+  &__main_txt {
+    font-size: 34px;
+    font-weight: 600;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    width: 320px;
+    margin: 12px 0;
+  }
+  &__btn {
+    color: black;
+    height: 40px;
+    width: 140px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    @include prefix(box-shadow, 0 1px 3px 0 rgba(50, 50, 50, 0.75));
+    cursor: pointer;
+    &_main {
+      color: white;
+      background: #2196f3;
+    }
+  }
+}
+
+.draggable-list-item {
+  position: relative;
+
+  &_dragging:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: white;
+    z-index: 100;
+  }
+
+  &__reorder-handle {
+    display: none;
+  }
+
+  &_draggable &__reorder-handle {
+    display: block;
+    position: absolute;
+    right: -20px;
+    color: black;
+    cursor: move;
+  }
+
+  &_dragging &__reorder-handle {
+    opacity: 0;
+  }
+}
+
+.tm-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  margin-bottom: 0; // For input.btn
+  font-weight: 400;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  border-radius: 4px;
+  user-select: none;
+  width: 135px;
+  font-size: 13px;
+  text-align: right;
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    @include prefix(box-shadow, (inset 0 3px 5px rgba(0,0,0,.125)));
+  }
+
+  &.disabled,
+  &[disabled],
+  &_disabled,
+  &_disabled:active,
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    opacity: .65;
+    @include prefix(box-shadow, (none));
+  }
+
+  .fa {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  &_type_choose-existing {
+    color: #00bcd5;
+    background: white;
+    border-color: #00bcd5;
+  }
+}
+
+.nav-item {
+  border: 1px solid transparent;
+  .tabs > & a {
+    margin: -12px -25px 0;
+    padding: 12px 25px 0;
+  }
+  .nav-tabs > &_invalid::after{
+    margin: -1px 3px 0px 0px;
+  }
+  &_invalid::after{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    background: #f64136;
+    margin: -1px 7px 0px 0px;
+  }
+}
+
+// voter web dialer:
+.call-actions {
+  &__btn {
+    cursor: pointer;
+    background: #1d8bd6;
+    border-radius: 19px;
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 0px 9px 0px rgba(255, 255, 255, 0.52);
+    box-sizing: border-box;
+    color: white;
+    margin: 0 auto;
+    & + & {
+      margin-right: 11px;
+    }
+
+    &_wide {
+      width: auto;
+      padding: 0 36px;
+      font-size: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0px 0px 9px 0px rgba(255, 255, 255, 0.75);
+    }
+
+    &_red {
+      background-color: #da4453;
+    }
+    &_orange {
+      background-color: #d58512;
+    }
+    &_gray {
+      background-color:gainsboro;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    }
+}

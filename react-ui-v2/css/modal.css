@@ -1,0 +1,33 @@
+.open-modal{
+    min-width: 350px;
+        min-height: 200px;
+        position: absolute;
+        z-index:100;
+        background-color: white;
+        border: 1px  solid #cccccc;
+        box-shadow: 1px 0px 4px 0px #a9a8a8;
+        padding: 10px;
+        color: black;
+}
+
+.cont-detail{
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.title-detail{
+    font-weight: bold;
+    margin-left: 5px;
+    color:#a9a8a8;
+
+}
+
+.value-detail{
+    color:black
+}
+
+.fa{
+    cursor: pointer;
+}
+

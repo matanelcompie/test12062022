@@ -1,0 +1,79 @@
+/** Telemarketing **/
+@import "campaign-list";
+@import "campaign-details";
+
+@import "../../tm/components/portionList/style/main";
+
+.toggle input {
+  display: none;
+}
+
+.toggle__slider {
+  position: relative;
+  transition: .4s;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle__slider:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 18px;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .toggle__slider:before {
+  left: 20px;
+}
+
+.tm-popup {
+  position: absolute;
+  background: white;
+  z-index: 1100;
+  border-radius: 5px;
+  padding: 2px 0;
+  -webkit-box-shadow: 0 0 9px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 0 9px -1px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 9px -1px rgba(0, 0, 0, 1);
+}
+
+.tm-popup__cover {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: transparent;
+  top: 0;
+  left: 0;
+}
+
+.rw-datetimepicker .rw-input {
+    border-radius: 0 4px 4px 0;
+    height: 2.125em;
+}
+
+.form-group.has-readonly {
+    .rw-input {
+      background: white;
+      cursor: default;
+      box-shadow: none;
+    }
+    .rw-datetimepicker {
+      border-color: white;
+      padding: 0;
+    }
+    .rw-select {
+      display: none;
+    }
+}
+.disabledClass{
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}

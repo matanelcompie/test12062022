@@ -1,0 +1,154 @@
+.household-details-row {
+  .household-details__cell {
+    &_col_first-name {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: bold;
+      color: $blue-medium;
+    }
+    &_col_phone-num {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: center;
+      position: relative;
+    }
+    &_col_vote-status {
+      height: 22px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__phone {
+    height: 22px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    padding: 0 5px;
+    & + & {
+      margin-top: 5px;
+    }
+    &:hover {
+      background-color: #eef1f7;
+      color: #7b7b7b;
+      .household-details-row__phone-edit,
+      .household-details-row__phone-delete {
+        display: inline-block;
+      }
+      .household-details-row__phone-warn {
+        display: none;
+      }
+    }
+
+    .form-control {
+      border-radius: 2px;
+      background-color: #ffffff;
+      box-shadow: inset 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
+      border: solid 1px $blue-light;
+      width: 100%;
+      margin: 0 -2px;
+      font-family: inherit;
+      box-sizing: border-box;
+      color: #666666;
+    }
+
+    &_updated &-num{
+      color: #e0b12f;
+    }
+    &_deleted &-num{
+      text-decoration: line-through;
+      color: $gray-dark;
+    }
+    &_error {
+      .household-details-row__phone-num {
+        color: $red;
+      }
+      .household-details-row__phone-warn {
+        display: inline-block;
+      }
+    }
+
+    .form-group + .household-details-row__phone-delete {
+      display: inline-block;
+    }
+  }
+
+  &__phone-num {
+    line-height: 22px;
+    height: 22px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    direction: ltr;
+    text-align: right;
+    padding: 0 3px;
+  }
+
+  &__phone-edit,
+  &__phone-delete,
+  &__phone-warn {
+    display: none;
+    position: relative;
+    background: center left no-repeat;
+    flex-shrink: 0;
+  }
+  &__phone-edit {
+    flex-grow: 1;
+    display: none;
+    height: 11px;
+    width: 11px;
+    background-image: url("images/pencil-gray.svg");
+    cursor: pointer;
+    top: -1px;
+  }
+  &__phone-delete {
+    height: 14px;
+    width: 14px;
+    background-image: url("images/circle-x-grey.svg");
+    cursor: pointer;
+    left: -1px;
+    margin-right: 2px;
+  }
+  &__phone-warn {
+    height: 11px;
+    width: 13px;
+    background-image: url("images/alert-red.svg");
+    top: -2px;
+    margin-right: 1px;
+  }
+
+  &__add-phone-btn {
+    cursor: pointer;
+    height: 22px;
+    color: $blue-medium;
+    font-size: 14px;
+    padding: 0 8px;
+    &:after {
+      height: 14px;
+      width: 14px;
+      content: '';
+      margin-right: 5px;
+      display: inline-block;
+      vertical-align: middle;
+      background: url("images/circle-plus-blue.svg") center no-repeat;
+    }
+  }
+
+  &__support-status {
+    font-size: 12px;
+    .form-control {
+      height: 22px;
+      font-size: 12px;
+      padding: 0px 9px;
+      color: #7b7b7b;
+    }
+    .fa-caret-down {
+      top: 2px;
+      left: 5px;
+    }
+  }
+}

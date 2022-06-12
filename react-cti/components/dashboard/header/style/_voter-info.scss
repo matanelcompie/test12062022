@@ -1,0 +1,84 @@
+.voter-info {
+  flex-basis: 50%;
+  &__header {
+    margin-bottom: 12px;
+    font-size: 25px;
+  }
+  &__first-name {
+    margin-left: 7px;
+    font-weight: 500;
+  }
+  &__last-name {
+    font-weight: bold;
+  }
+  &__support-status {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 19px;
+    font-size: 11px;
+    line-height: 17px;
+    padding: 0 14px;
+    margin-right: 12px;
+    border: 1px solid #666666;
+    border-radius: 9px;
+    background: white;
+    color: #666666;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    user-select: none;
+    cursor: default;
+    font-weight: bold;
+
+    &_type_1 {  // secure support
+      border-color: $green-medium;
+      color: $green-medium;
+    }
+    &_type_2 {  // support
+      border-color: $blue-medium;
+      color: $blue-medium;
+    }
+    &_type_3 {  // hesitant
+      border-color: #e0b12f;
+      color: #e0b12f;
+    }
+    &_type_4 {  // no support
+      border-color: $red;
+      color: $red;
+    }
+  }
+  &__details {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    font-size: 14px;
+    color: #dbeefa;
+  }
+  &__detail{
+    flex-basis: 50%;
+    &:nth-child(n+3) {
+      border-right: 1px solid #86ccf5;
+    }
+    &_type_person {
+      min-width: 35px;
+      padding-left: 10px;
+    }
+    &_type_address {
+      min-width: 180px;
+      padding-right: 20px;
+      padding-left: 15px;
+    }
+    &_type_phone {
+      padding-right: 20px;
+    }
+    &_type_current-phone {
+      font-weight: bold;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+.modal-send-sms {
+  &__header-phone {
+    color: #8690a2;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: start;
+  }
+
+  &__header-message {
+    color: #8690a2;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: start;
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+
+  &__form-input {
+    display: flex;
+    width: 324px;
+
+    input {
+      border: none;
+    }
+
+    img {
+      margin-right: 130px;
+    }
+  }
+
+  &__form-select {
+    text-align: start;
+
+    select {
+      font-size: 14px;
+      color: #8690a2;
+    }
+  }
+
+  &__form-input-textarea {
+    text-align: start;
+  }
+
+  &__form-input-text-error, &__form-input-textarea-error {
+    border: 1px solid #e35065;
+    background-color: #fdf3f4;
+
+    input {
+      font-size: 14px;
+      color: #e35065;
+    }
+  }
+
+  &__form-input-text-valid, &__form-input-textarea-valid {
+    border: 1px solid #38c199;
+    background-color: #f0fbf7;
+
+    input {
+      font-size: 14px;
+      color: #38c199;
+    }
+  }
+
+  &__form-input-textarea-valid, &__form-input-textarea-error {
+    width: 321px;
+    height: 100px;
+  }
+}

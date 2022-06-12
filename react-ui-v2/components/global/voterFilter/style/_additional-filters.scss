@@ -1,0 +1,7 @@
+.additional-filters {
+  &__filter-column {
+    width: calc(50% - 4px);
+    display: flex;
+    flex-direction: column;
+  }
+}

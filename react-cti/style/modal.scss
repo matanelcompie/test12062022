@@ -1,0 +1,28 @@
+.mwindow-header {
+  background: #e9edf3;
+}
+
+.mwindow-header-title {
+  color: $black-light-1;
+  font-size: 16px;
+}
+
+.mwindow-content {
+  font-size: 15px;
+  line-height: 1.59;
+  text-align: center;
+  color: #666666;
+  margin: 40px 0;
+}
+
+.mwindow-buttons {
+  border-top: none;
+
+  button {
+    @extend .cti-btn;
+    @extend .cti-btn_type_primary;
+    height: 34px;
+    border-radius: 17px;
+    margin-bottom: 27px;
+  }
+}

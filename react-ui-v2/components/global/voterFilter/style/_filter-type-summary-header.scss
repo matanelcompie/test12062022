@@ -1,0 +1,23 @@
+.filter-type-summary-header {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+
+  &__expand-btn {
+    cursor: pointer;
+    margin-left: 6px;
+    width: 10px;
+    text-align: center;
+  }
+  &__title {
+    flex-grow: 1;
+  }
+  &__filter-icon {
+    margin-left: 8px;
+    color: #bdbdbd;
+  }
+
+  .filter-type-summary_expanded > & &__expand-btn {
+    color: #1698f8;
+  }
+}

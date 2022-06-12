@@ -1,0 +1,63 @@
+@import "elements/Combo.scss";
+@import "elements/Menu.scss";
+//*********************************** Top header:
+.RowIcons {
+    list-style:none;
+    padding-left:10px;
+    padding-right:0;
+    display:inline-block;
+}
+.RowIcons > li {
+    display:inline-block;
+    margin-right:15px;
+}
+
+.RowIcons > li > a {
+    cursor: pointer;
+}
+.Icon.TopNavIcon {
+    width:21px;
+    height:21px;
+    opacity:0.6;
+    transition:all ease 0.2s;
+    -moz-transition:all ease-in-out 0.2s;
+    -ms-transition:all ease-in-out 0.2s;
+    -o-transition:all ease-in-out 0.2s;
+    -webkit-transition:all ease-in-out 0.2s;
+}
+.Icon.TopNavIcon:hover {
+    opacity:1;
+}
+.TopNavIcon.Active {
+    opacity:1;
+}
+
+.ToggleMenu {
+    margin:20px 0 0 13px;
+}
+.systemName img {
+    width:19%;
+}
+.systemName {
+    border:none;
+    padding:10px 0;
+}
+
+#menuli0 {
+    display:inherit;
+}
+.userName {
+    padding-right:6px;
+}
+// Inputs errors:
+input.error, select.error{
+    border: 2px solid red !important;
+}
+label.error{
+    color: red;
+}
+// Hide class:
+
+.hide{
+    display: none !important;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "mobile-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "node_modules/.bin/webpack-dev-server",
+    "webpack": "node_modules/.bin/webpack",
+    "webpack-watch": "node_modules/.bin/webpack --progress --colors --watch",
+    "webpack-production": "node_modules/.bin/webpack --progress -p --config webpack.prod.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "moment": "^2.22.2",
+    "qs": "^6.5.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-history": "^0.18.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "webpack": "^4.16.4"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.2"
+  }
+}

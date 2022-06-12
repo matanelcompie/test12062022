@@ -1,0 +1,63 @@
+.messages {
+  
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+  &__files-names {
+    margin-top: 7px;
+    flex-grow: 0;
+  }
+
+  &__actions-buttons {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 17px;
+    padding-left: 20px;
+  }
+
+  .action-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 7px;
+  }
+
+  &__preview {
+    text-align: center;
+    font-size: 35px;
+    flex-grow: 1;
+
+    .fa-eye {
+      color: #999;
+    }
+  }
+
+  &__preview-text {
+    font-size: 17px;
+    color: #999;
+  }
+
+  &__actions-btn {
+    background-color: #eee;
+    color: #9ea9b7;
+    box-shadow: 0px 0px 9px 0px rgba(216, 217, 219, 0.52);
+  }
+
+  &__non-sharable-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

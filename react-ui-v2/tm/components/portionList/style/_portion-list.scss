@@ -1,0 +1,78 @@
+$static-column-widths: (
+        order: 35px,
+        actions: 130px,
+);
+//define  portion list cells width:
+
+$relative-column-widths: (
+        name: 1/9,
+        creator_name: 2/18,
+        created_at: 2/18,
+        voters_count: 1/9,
+        unique_voters_count: 1/9,
+		sent_to_dialer:1/9,
+        processed_count: 1/9,
+        processing_count: 1/9,
+		answered_percentage:1/9,
+        served: 1/9,
+        serving: 1/9,
+);
+//calculate  portion list cells width:
+.portion-list {
+  border: 1px solid #e0e0e0;
+  font-weight: 600;
+  $static-width-total: map-sum($static-column-widths);
+  $relative-remainder: (100% - #{$static-width-total});
+  &__cell {
+    padding: 6px 14px;
+    text-align: center;
+
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+//define each cell
+    @each $column, $width in $static-column-widths {
+      &_col_#{$column} {
+        width: $width;
+      }
+    }
+    @each $column, $width in $relative-column-widths {
+      &_col_#{$column} {
+        width: calc((#{$relative-remainder}) * (#{$width * 1}));
+      }
+    }
+    & + & {
+      border-right: 1px solid rgba(0,0,0,0.12);
+    }
+    &_id {
+      padding: 6px;
+    }
+    &_col_name,
+    &_col_creator,
+    &_col_created_at {
+      text-align: right;
+    }
+    &_col_total-label {
+      width: calc(((#{$relative-remainder}) * (#{3/9 * 1})) + 35px)
+    }
+  }
+  &__totals {
+    background: #e0e0e0;
+  }
+
+  .draggable-list-item {
+    &:nth-child(even) {
+      background: #f5f5f5;
+    }
+    &_dragging:after {
+      @include prefix(box-shadow, (inset 0px 1px 0px 0px rgba(0, 0, 0, 0.12), inset 0px -1px 0px 0px rgba(0, 0, 0, 0.12)));
+    }
+    &__reorder-handle {
+      line-height: 34px;
+      top: 1px;
+    }
+  }
+}

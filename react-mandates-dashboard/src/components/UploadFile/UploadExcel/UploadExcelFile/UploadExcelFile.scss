@@ -1,0 +1,29 @@
+.tit-contentContainer{
+    margin-bottom: 9px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid #f7f1f1;
+    padding-bottom: 5px;
+}
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+
+    .comboExcelType{
+        width: 250px;
+    }
+
+}
+
+.top-btn-navigate{
+    margin-left: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    direction: ltr;
+}

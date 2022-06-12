@@ -1,0 +1,28 @@
+.geographic-header {
+  display: flex;
+  &__title {
+    flex-grow: 1;
+  }
+  &__buttons {
+    display: flex;
+  }
+  &__btn {
+    height: 30px;
+    width: 100px;
+    padding: 6px 10px;
+    line-height: 1;
+    font-size: 13px;
+    &_type_show-all,
+    &_type_clear-all {
+      line-height: 1.5;
+      width: auto;
+    }
+    &_type_clear-all {
+      color: #2196f3;
+    }
+    &_type_add {
+      background: #488bb8;
+      color: white;
+    }
+  }
+}

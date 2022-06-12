@@ -1,0 +1,27 @@
+.modal-between-calls {
+  &__row-spinner {
+    color: white;
+    margin-top: 20px;
+
+    .fa-spinner {
+      font-size: 40px;
+    }
+  }
+
+  &__row-waiting {
+    color: #c3c5c4;
+    margin-top: 30px;
+    font-size: 16px;
+  }
+
+  &__row-ticker {
+    color: white;
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
+  &__row-error {
+    color: red;
+    font-size: 20px;
+  }
+}

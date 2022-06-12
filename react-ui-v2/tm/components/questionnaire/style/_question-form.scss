@@ -1,0 +1,53 @@
+.question-form {
+  margin-bottom: 20px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    .form-group {
+      display: flex;
+      flex-grow: 1;
+      align-items: baseline;
+      margin-bottom: 0;
+      & + .form-group {
+        margin-right: 30px;
+      }
+      & > .form-control {
+        flex-grow: 1;
+        width: initial;
+        height: 37px;
+      }
+    }
+    label {
+      font-weight: 600;
+      width: 110px;
+      margin-left: 10px;
+    }
+    .form-combo {
+      flex-grow: 1;
+    }
+    .error {
+      color: red;
+      padding-right: 0px;
+    }
+  }
+  &__texts-title {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__texts-section &__row {
+    margin-bottom: 8px;
+    label {
+      color: #2295f2;
+    }
+  }
+  &__row-btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-right: 6px;
+    width: 130px;
+  }
+}
