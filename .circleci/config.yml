@@ -23,8 +23,8 @@ jobs:
              nvm install 14.19.3
              nvm use 14.19.3
              npm --version
-             nodejs --version
              cd react-cti
+             npm install
              npm run webpack   
 
               
