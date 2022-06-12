@@ -20,8 +20,8 @@ jobs:
              curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
              source ~/.profile  
              nvm install node
-             nvm install 14.9.3
-             nvm use 14.9.3
+             nvm install 14.19.3
+             nvm use 14.19.3
       - run:
           name: install Php
           command: |
