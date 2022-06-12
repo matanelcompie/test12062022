@@ -8,12 +8,9 @@ jobs:
     working_directory: ~/checkout
     steps:
       - checkout
-      - run: sudo apt install curl
-      - run: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-      - run: source ~/.profile  
-      - run: nvm install node
-      - run: nvm install 14.19.3
-      - run: nvm use 14.19.3
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: nvm install node && nvm install 14.19.3 && nvm use 14.19.3
       - run: npm --version
       - run:
           name: check basic staff
