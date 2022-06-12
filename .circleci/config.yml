@@ -21,25 +21,12 @@ jobs:
              source ~/.profile  
              nvm install node
              nvm install 14.19.3
-             nvm use 14.19.3       
-      - run:
-          name:  need .env (from shass prod) **********
-          command: |
-             ls
+             nvm use 14.19.3
              npm --version
              nodejs --version
-      - run:
-          name:  handle client folders (run this only if react-cti folder has changed)  **********
-          command: |
              cd react-cti
-             ls
-             npm install
-      - run:
-          name:  handle client folders (run this only if react-cti folder has changed)  **********
-          command: |
-             cd react-cti
-             ls
-             npm run webpack
+             npm run webpack   
+
               
 
 workflows:
