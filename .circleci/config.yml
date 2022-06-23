@@ -1,9 +1,15 @@
 ---
 version: 2.1
 jobs:
-  build-and-deploy:
+  deploy:
+    machine:
+      image: ubuntu-2004:202111-02
+    resource_class: medium
+    working_directory: ~/shass_app
     steps:
       - checkout
+      - restore_cache: 
+          key: deps1-{{ checksum "test_dir" }}
       - run:
           command: |
             python3 -m venv venv
@@ -17,7 +23,7 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  deploy:
     jobs:
       - deploy:
           filters:
