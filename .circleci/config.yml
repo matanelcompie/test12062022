@@ -1,3 +1,36 @@
+---
+version: 2.1
+jobs:
+  build-and-deploy:
+    steps:
+      - checkout
+      - run:
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r test_dir/requirements.txt
+      - save_cache:
+          key: deps1-{{ checksum "test_dir" }}
+          paths:
+            - "test_dir"
+
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: main 
+
+# only deploy on the main branch
+# ssh $SSH_USER@$SSH_HOST "ansible dev -m command -a 'hostname'"
+# - run: ssh $SSH_USER@$SSH_HOST "ansible-playbook /home/ubuntu/ansible/playbook.yaml"
+# - run: ssh $SSH_USER@$SSH_HOST "ansible dev -i /home/ubuntu/ansible/inventory -m file -a 'path=/home/ubuntu/ubuntu_test.txt state=touch'"
+#- run: ssh $SSH_USER@$SSH_HOST "ansible all -i inventory -m ping"
+
+
 # ---
 # version: 2.1
 # jobs:
@@ -23,35 +56,3 @@
 #           key: test_dir-key
 #           paths:
 #             - test_dir   
-
-
-version: 2.1
-jobs:
-  build:
-    steps:
-      - checkout
-      - restore_cache: 
-          key: deps1-{{ checksum "test_dir" }}
-      - run:
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r test_dir/requirements.txt
-      - save_cache:
-          key: deps1-{{ checksum "test_dir" }}
-          paths:
-            - "test_dir"
-
-
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only: main # only deploy on the main branch
-# ssh $SSH_USER@$SSH_HOST "ansible dev -m command -a 'hostname'"
-# - run: ssh $SSH_USER@$SSH_HOST "ansible-playbook /home/ubuntu/ansible/playbook.yaml"
-# - run: ssh $SSH_USER@$SSH_HOST "ansible dev -i /home/ubuntu/ansible/inventory -m file -a 'path=/home/ubuntu/ubuntu_test.txt state=touch'"
-#- run: ssh $SSH_USER@$SSH_HOST "ansible all -i inventory -m ping"
