@@ -1,97 +1,46 @@
----
+# ---
+# version: 2.1
+# jobs:
+#   deploy:
+#     machine:
+#       image: ubuntu-2004:202111-02
+#     resource_class: medium
+#     working_directory: ~/shass_app
+#     steps:
+#       - checkout
+#       - run:
+#           name: ls test_dir
+#           command: |
+#              ls test_dir
+#       - restore_cache:
+#         keys:
+#           - test_dir-key-{{ checksum "test_dir-key" }}
+#       - run:
+#           name: ls test_dir
+#           command: |
+#              ls test_dir
+#       - save_cache:
+#           key: test_dir-key
+#           paths:
+#             - test_dir   
+
+
 version: 2.1
 jobs:
-  deploy:
-    machine:
-      image: ubuntu-2004:202111-02
-    resource_class: medium
-    working_directory: ~/checkout
+  build:
     steps:
       - checkout
+      - restore_cache: 
+          key: deps1-{{ checksum "test_dir" }}
       - run:
-          name: check basic staff
           command: |
-             sudo apt install curl
-             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-             source ~/.profile
-             nvm install node
-             nvm install 14.19.3
-             nvm use 14.19.3
-             npm --version
-             cd react-cti
-             npm install
-             npm run webpack
-      - run:
-          name:  handle client folders (run this only if react-ui-v2 folder has changed)  **********
-          command: |
-             sudo apt install curl
-             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-             source ~/.profile
-             nvm install node
-             nvm install 14.19.3
-             nvm use 14.19.3
-             npm --version
-             cd react-ui-v2
-             npm install
-             npm run webpack-production        
-      - run:
-          name:  handle client folders (run this only if react-dashboard folder has changed)  **********
-          command: |
-             sudo apt install curl
-             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-             source ~/.profile
-             nvm install node
-             nvm install 14.19.3
-             nvm use 14.19.3
-             npm --version
-             cd react-dashboard
-             npm install
-             export NODE_OPTIONS=--max_old_space_size=4096
-             npm run build
-      - run:
-          name:  handle client folders (run this only if react-mandates-dashboard folder has changed)  **********
-          command: |
-             sudo apt install curl
-             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-             source ~/.profile
-             nvm install node
-             nvm install 14.19.3
-             nvm use 14.19.3
-             npm --version
-             cd react-mandates-dashboard
-             npm install
-             npm run build
-      - run:
-          name:  handle client folders (run this only if react-activists-payments folder has changed)  **********
-          command: |
-             sudo apt install curl
-             curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-             source ~/.profile
-             nvm install node
-             nvm install 14.19.3
-             nvm use 14.19.3
-             npm --version
-             cd react-activists-payments
-             npm install
-             npm run build             
-      - run:
-          name: check basic staff
-          command: |
-             pwd
-             ls
-      - run:
-          name: install Nvm
-          command: |
-             mkdir h1
-             ls
-             cd h1
-      - run:
-          name: ii
-          command: |
-             ls
-             mkdir h2
-             ls  
-
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r test_dir/requirements.txt
+      - save_cache:
+          key: deps1-{{ checksum "test_dir" }}
+          paths:
+            - "test_dir"
 
 
 workflows:
