@@ -9,16 +9,16 @@ jobs:
     steps:
       - checkout
       - restore_cache: 
-          key: deps1-{{ checksum "test_dir" }}
+          key: deps1-{{ checksum "test_dir/requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r test_dir/requirements.txt
       - save_cache:
-          key: deps1-{{ checksum "test_dir" }}
+          key: deps1-{{ checksum "test_dir/requirements.txt" }}
           paths:
-            - "test_dir"
+            - shass_app/test_dir/requirements.txt
 
 
 workflows:
